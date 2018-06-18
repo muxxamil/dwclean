@@ -1185,7 +1185,7 @@ form.contact-form textarea + label.error {
   margin-top: -12px;
 }
 .successform,
-.errorform {
+.errorform, .notificationBox {
   display: none;
   min-height: 50px;
 }

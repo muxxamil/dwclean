@@ -6,6 +6,7 @@
 			    $window = $(window),
 			    forms = {
 				contactForm: $('#contactForm'),
+				blogForm: $('#blogForm'),
 				orderForm: $('#orderForm'),
 				questionForm: $('#questionForm')
 			};
@@ -48,7 +49,7 @@
 							$(form).ajaxSubmit({
 								type: "POST",
 								data: $(form).serialize(),
-								url: "form/process-order.php",
+								url: "controllers/process-order.php",
 								success: function success() {
 									$('.successform', $orderForm).fadeIn();
 									$orderForm.get(0).reset();
@@ -97,13 +98,56 @@
 							$(form).ajaxSubmit({
 								type: "POST",
 								data: $(form).serialize(),
-								url: "form/process-contact.php",
+								url: "controllers/process-contact.php",
 								success: function success() {
 									$('.successform', $contactform).fadeIn();
 									$orderForm.get(0).reset();
 								},
 								error: function error() {
 									$('.errorform', $contactform).fadeIn();
+								}
+							});
+						}
+					});
+				}
+
+				// blog page form
+				if (forms.blogForm.length) {
+					var $blogForm = forms.blogForm;
+					$blogForm.validate({
+						rules: {
+							title: {
+								required: true,
+								minlength: 2
+							},
+							description: {
+								required: true,
+								minlength: 20
+							}
+
+						},
+						messages: {
+							title: {
+								required: "Please enter your title",
+								minlength: "Title must consist of at least 2 characters"
+							},
+							description: {
+								required: "Please enter description",
+								minlength: "Description must consist of at least 20 characters"
+							},
+						},
+						submitHandler: function submitHandler(form) {
+							$(form).ajaxSubmit({
+								type: "POST",
+								data: $(form).serialize(),
+								url: "controllers/add-post.php",
+								success: function (response) {
+									$('#blogNotification').text(response);
+									$('#blogNotification').css('color', 'red');
+									$('.notificationBox', $blogForm).fadeIn();
+								},
+								error: function error() {
+									$('.errorform', $blogForm).fadeIn();
 								}
 							});
 						}
@@ -146,7 +190,7 @@
 							$(form).ajaxSubmit({
 								type: "POST",
 								data: $(form).serialize(),
-								url: "form/process-question.php",
+								url: "controllers/process-question.php",
 								success: function success() {
 									$('.successform', $questionForm).fadeIn();
 									$questionForm.get(0).reset();

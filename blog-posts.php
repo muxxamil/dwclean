@@ -5,6 +5,7 @@
 
 ?>
 
+<link href="css/fileUpload.css" rel="stylesheet">
 <main class="page-main">
 	<!-- Breadcrumbs Block -->
 	<div class="block breadcrumbs">
@@ -17,122 +18,55 @@
 	</div>
 	<!-- //Breadcrumbs Block -->
 	<div class="block">
-		<h2 class="text-center h-lg h-decor">Blog Posts</h2>
 		<div class="container">
 			<div class="row">
+				<div class="col-md-12">
+					<h2 class="text-center h-lg h-decor">Add New Post</h2>
+					<form class="contact-form" id="blogForm" method="post" novalidate>
+						<input type="hidden" class="input-custom input-full" name="base64Image" id="base64Image">
+						<div class="notificationBox text-center">
+							<p id = "blogNotification">Your message was sent successfully!</p>
+						</div>
+						<div class="errorform text-center">
+							<p>Something went wrong, try refreshing and submitting the form again.</p>
+						</div>
+						<div class="input-wrapper">
+							<input type="text" class="input-custom input-full" name="title" placeholder="Post Title*">
+						</div>
+						<div class="input-wrapper">
+							<input type="text" class="input-custom input-full" name="videoLink" placeholder="Paste video link from youtube">
+						</div>
+						<div class="input-wrapper">
+
+							<div class="input-group image-preview">
+				                <input type="text" class="input-custom input-full form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+				                <span class="input-group-btn">
+				                    <!-- image-preview-clear button -->
+				                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">  Clear
+				                    </button>
+				                    <!-- image-preview-input -->
+				                    <div class="btn btn-default image-preview-input">
+				                        <span class="image-preview-input-title">Browse</span>
+				                        <input type="file" class="input-custom input-full" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+				                    </div>
+				                </span>
+				            </div>
+
+						</div>
+						<div class="input-wrapper">
+							<textarea class="textarea-custom input-full" name="description" placeholder="Description*"></textarea>
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn">Add Post</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<h2 class="text-center h-lg h-decor">Blog Posts</h2>
+			<div class="row">
 				<div class="col-md-9 aside">
-					<div class="blog-post">
-						<div class="post-image">
-							<a href="blog-post-page.php"><img src="images/blog/blog-post-img-1.jpg" alt=""></a>
-						</div>
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">New Cleaning With Hydrogen Peroxide Tips</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-teaser">
-							<p>Hydrogen peroxide is right up there with vinegar and baking soda as one of my favorite household cleaners. Happy Slob reader Jo Ann B. submitted these awesome new (to me!) hydrogen peroxide cleaning tips that I knew you guys would love. If you have a fresh way to use peroxide, then please post a comment with your cleaning tip.</p>
-						</div>
-						<div class="post-read-more"><a href="blog-post-page.php" class="btn">Read Post</a></div>
-					</div>
-					<div class="blog-post">
-						<div class="post-image">
-							<div class="post-video">
-								<iframe src="https://player.vimeo.com/video/144583212"></iframe>
-							</div>
-						</div>
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">A Choose-Your-Own-Adventure Plan for Tackling an Annual Chore</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-teaser">
-							<p>Hopefully you're not too bitter with me about making you clean again this weekend. But we're starting the home stretch of spring cleaning! One week from today is the official last day of the program—so I think it's just best if we buckle down and get going...</p>
-						</div>
-						<div class="post-read-more"><a href="blog-post-page.php" class="btn">Read Post</a></div>
-					</div>
-					<div class="blog-post">
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">Apartment Therapy Mom Wisdom on... Taking Care of Your Home</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-teaser">
-							<p>"I am still learning about my home. If you can't do it yourself, find good service people and treat them well." — Terry (mom to our Human Resources Coordinator, Louisa)</p>
-							<div class="quote">
-								<p>Raise your hand if you grew up with a mom (or another parental figure) constantly reminding you to clean your room. Often, our earliest memories of figuring out how to tidy up and take care of our homes are with our moms—they taught us how to do laundry, how to do the dishes, and how to make our beds. So it should come as no surprise that when we asked our moms for their best homekeeping advice, they came back with some great tips.</p>
-								<p>Most agreed on a few major themes: it's important to make sure everything has a home, that you put things back when you take them out, and that your home is an inviting, relaxing place to come home to—and invite others to.</p>
-							</div>
-						</div>
-						<div class="post-read-more"><a href="blog-post-page.php" class="btn">Read Post</a></div>
-					</div>
-					<div class="blog-post">
-						<div class="post-image">
-							<div class="post-carousel">
-								<a href="#"><img src="images/blog/blog-post-img-2.jpg" alt=""></a>
-								<a href="#"><img src="images/blog/blog-post-img-2-1.jpg" alt=""></a>
-								<a href="#"><img src="images/blog/blog-post-img-2-2.jpg" alt=""></a>
-							</div>
-						</div>
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">Try the "Good Enough" Method to Clean Kitchen</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-teaser">
-							<p>Do you ever casually go about your day, popping into the kitchen for a little peanut butter toast and then the next thing you know you're turning over the toaster oven because it's been so long and you just can't take the crumbs anymore? </p>
-						</div>
-						<div class="post-read-more"><a href="blog-post-page.php" class="btn">Read Post</a></div>
-					</div>
-					<div class="blog-post">
-						<div class="post-image">
-							<div class="post-music">
-								<iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/301212235&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-							</div>
-						</div>
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">A Quick Kitchen-Cleaning Mission for Monday</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-teaser">
-							<p>At the risk of sounding like a cloyingly optimistic Peppy Patty (which I can assure you, I am not), I never really understood all the pervasive hate for Mondays. I get that easing yourself from the freedom of the weekend into the structure of the workweek is a bit of a shock to the system...</p>
-						</div>
-						<div class="post-read-more"><a href="blog-post-page.php" class="btn">Read Post</a></div>
-					</div>
-					<div class="blog-post">
-						<div class="post-image">
-							<a href="blog-post-page.php"><img src="images/blog/blog-post-img-3.jpg" alt=""></a>
-							<div class="post-link-wrapper">
-								<div class="vert-wrap">
-									<div class="vert"> <a href="#" class="post-link">http://www.cleanerslink.com</a> </div>
-								</div>
-							</div>
-						</div>
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">The "Flip and Fluff" Routine is the Best Thing You Can Do For Your Furniture</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-teaser">
-							<p>Our spring cleaning journey has been about turning over some lesser-cleaned leaves and refreshing your space to feel brand new for the season ahead. So in many ways, today's assignment is symbolic of the whole shebang. We're going to be flipping and turning, revealing a fresh new face for some of the most-used...</p>
-						</div>
-						<div class="post-read-more"><a href="blog-post-page.php" class="btn">Read Post</a></div>
-					</div>
-					<div class="clearfix"></div>
-					<div class="text-center">
-						<ul class="pagination">
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-						</ul>
-					</div>
+					<input type="hidden" id="pageNumber" name="pageNumber" value="1">
+					<div id = "postResultBox"></div>
 				</div>
 				<div class="col-md-3 aside">
 					<div class="side-block">
@@ -254,6 +188,10 @@
 		</div>
 	</div>
 </main>
+
+
+<script src="js/fileUpload.js"></script>
+<script src="js/blog.js"></script>
 
 <?php
 	

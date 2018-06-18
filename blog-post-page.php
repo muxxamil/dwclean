@@ -2,6 +2,10 @@
 	
 	$page_title = "Blog";
 	include("header.php");
+	include_once('defaults/config.php');
+	include("controllers/get-posts.php");
+
+	$result = current($postList);
 
 ?>
 
@@ -12,65 +16,40 @@
 			<ul class="breadcrumb">
 				<li><a href="index.php">Home</a></li>
 				<li><a href="blog-posts.php">Blog</a></li>
-				<li>Hiring A Great Housekeeper</li>
+				<li><?php echo $result[title]; ?></li>
 			</ul>
 		</div>
 	</div>
 	<!-- //Breadcrumbs Block -->
 	<div class="block">
-		<h2 class="text-center h-lg h-decor">Blog Posts</h2>
+		<h2 class="text-center h-lg h-decor">Blog Post</h2>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9 aside">
 					<div class="blog-post single">
-						<div class="post-image">
-							<a href="blog-post-page.php"><img src="images/blog/blog-post-img-4.jpg" alt=""></a>
-						</div>
-						<ul class="post-meta">
-							<li class="post-meta-date">16 December, 2017</li>
-							<li class="post-meta-reviews"><i class="icon icon-speech-bubble"></i><span>3</span></li>
-						</ul>
-						<h2 class="post-title">Hiring A Great Housekeeper</h2>
-						<div class="post-author">by Paul Johnson</div>
-						<div class="post-content">
-							<p>Hiring just the right housekeeper can be life-altering for the busy family. Now this may seem to be a little over-the-top, but I am serious. Think about your life-whether single, a couple or a family-you have no time. No time to keep your home as organized or clean as you would like. No time to do the smaller tidying jobs that would make a huge difference.</p>
-							<div class="quote">
-								<p>Maybe you struggle to fold laundry, clean ovens and counter tops, or scrub bathrooms. Maybe you need to clean your house fast for a party, need a hotel maid to help scrub motel rooms, or are looking for a professional to help with hospital housekeeping.</p>
-								<p>It seems cliched to say it, but often we let things slip through the cracks. We spend too much time thinking about them, too much energy worrying about them. You deserve a house cleaner or home maker to make your life easier. You deserve professional house cleaning, or a dedicated housekeeper.</p>
-							</div>
-							<p>And here enters great housekeeping. Now to be realistic, all relationships whether working or personal, have a starting point, and with the right match, can grow into something much more. It is certainly so with a new housekeeper. You look for certain qualities in a person, offer them a job and hope that it was a good choice.</p>
-							<p>went to the opinions of my friends. I asked each of them the same question. "What is the one quality that you would have to have to see when hiring a new housekeeper?" Below, I've distilled down their answers.</p>
-							<ul class="tags-list">
-								<li><a href="#">Cleaning</a></li>
-								<li><a href="#">Housekeeping</a></li>
-								<li><a href="#">Window Cleaner</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="divider-lg"></div>
-					<h2>Leave a Comment</h2>
-					<form class="contact-form comment-form" name="commentform" method="post" novalidate>
-						<div class="inputs-col">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="input-wrapper">
-										<input type="text" class="input-custom input-full" name="name" placeholder="Your name*">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="input-wrapper">
-										<input type="text" class="input-custom input-full" name="email" placeholder="Email*">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="input-wrapper">
-							<textarea class="textarea-custom input-full" name="message" placeholder="Message"></textarea>
-						</div>
-						<button type="submit" class="btn btn-border">Send Message</button>
-					</form>
+                        <div class="post-image">
+<?php
+	    					if(array_key_exists("video", $result)) {
+?>
+	        					<iframe width="100%" height="500px" src="<?php echo $result[video]; ?>"></iframe>
+<?php	    
+	    					} elseif(array_key_exists("image", $result)) {
+?>
+	        					<a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $result[title]) . '&id=' . $result[id]; ?>"><img src="images/blog-posts/<?php echo $result[image]; ?>"></a>
+<?php
+	    
+	    					}
+?>
+                        </div>
+                        <ul class="post-meta">
+                            <li class="post-meta-date"><?php echo date('d M, Y' , strtotime($result['date_added'])); ?></li>
+                        </ul>
+                        <h2 class="post-title"><?php echo  $result['title'] ?></h2>
+                        <div class="post-author">by <?php echo  $result['username'] ?></div>
+                        <div class="post-content">
+                            <p><?php echo nl2br($result['description']); ?></p>
+                        </div>
+                    </div>
 					<div class="divider divider-lg"></div>
 				</div>
 				<div class="col-md-3 aside">
