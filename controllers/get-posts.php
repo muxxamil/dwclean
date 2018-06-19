@@ -4,14 +4,14 @@ include_once('../defaults/config.php');
 
 $offset = 0;
 $limit 	= 2;
-$whereClause 	= "";
+$whereClause 	= "where p.is_deleted = 0 ";
 
 if(!empty($_GET['pageNumber'])) {
 	$offset = (($_GET['pageNumber'] - 1) * $limit);
 }
 
 if(!empty($_GET['id'])) {
-	$whereClause = "where p.id = $_GET[id]";
+	$whereClause .= " AND p.id = $_GET[id]";
 }
 
 $query = "SELECT 
@@ -28,7 +28,7 @@ FROM
   LEFT JOIN " . POST_INGREDIENTS_TABLE . " AS pi 
     ON p.id = pi.post_id 
     $whereClause
-  ORDER BY p.id DESC, pi.type DESC
+  ORDER BY p.id DESC
 #  LIMIT $limit OFFSET $offset;
 ";
 

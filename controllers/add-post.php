@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if(empty($_SESSION['userid'])) {
+	echo "Please login to add post.";
+	die();
+}
+
 include('../defaults/config.php');
 
 if(empty($_POST['title'])) {
@@ -37,8 +43,7 @@ if(!empty($_POST['videoLink'])) {
 	}
 }
 
-session_start();
-$query = "INSERT INTO " . POSTS_TABLE . " VALUES (NULL, '$_POST[title]', '$_POST[description]', 1 , NOW(), NOW())";
+$query = "INSERT INTO " . POSTS_TABLE . " VALUES (NULL, '$_POST[title]', '$_POST[description]', 1 , 0 , NOW(), NOW())";
 
 if($conn->query($query) === TRUE) {
 

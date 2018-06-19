@@ -33,7 +33,8 @@
 ?>
 	        					<iframe width="100%" height="500px" src="<?php echo $result[video]; ?>"></iframe>
 <?php	    
-	    					} elseif(array_key_exists("image", $result)) {
+	    					} 
+	    					if(array_key_exists("image", $result)) {
 ?>
 	        					<a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $result[title]) . '&id=' . $result[id]; ?>"><img src="images/blog-posts/<?php echo $result[image]; ?>"></a>
 <?php

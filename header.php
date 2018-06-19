@@ -32,6 +32,11 @@
 
 <body>
 	<!-- Header -->
+<?php
+
+session_start();
+
+?>
 	<header class="page-header header-sticky">
 		<div class="page-header-mobile-info">
 			<div class="page-header-mobile-info-content">
@@ -84,6 +89,13 @@
 					</li>
 					<li><a href="testimonials.php">Testimonials</a></li>
 					<li><a href="contact.php">Contacts</a></li>
+<?php
+if(!empty($_SESSION['userid'])) {
+?>	
+					<li><a href="controllers/logout.php">Logout</a></li>
+<?php
+}
+?>
 				</ul>
 			</div>
 		</div>

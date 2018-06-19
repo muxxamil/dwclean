@@ -3,10 +3,11 @@
 include('../controllers/get-posts.php');
 
 if(!empty($postList)) {
+	session_start();
 	foreach ($postList as $key => $value) {
 ?>
 
-<div class="blog-post">
+<div class="blog-post" id="blogPost<?php echo $value[id]; ?>">
 	<div class="post-image">
 <?php
 	    if(array_key_exists("video", $value)) {
@@ -29,7 +30,14 @@ if(!empty($postList)) {
 	<div class="post-teaser">
 	    <p><?php echo substr($value[description] , 0 , 200); ?></p>
 	</div>
-	<div class="post-read-more"><a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>" class="btn">Read Post</a></div>
+	<div class="post-read-more col-md-6"><a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>" class="btn">Read Post</a></div>
+<?php
+if(!empty($_SESSION['userid'])) {
+?>
+	<div class="post-read-more col-md-6"><a onclick = "deletePost(<?php echo $value['id']; ?>)" value="<?php echo $value[id]; ?>" class="btn">Delete Post</a></div>
+<?php
+}
+?>
 </div>
 
 <?php

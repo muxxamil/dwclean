@@ -7,6 +7,7 @@
 			    forms = {
 				contactForm: $('#contactForm'),
 				blogForm: $('#blogForm'),
+				loginForm: $('#loginForm'),
 				orderForm: $('#orderForm'),
 				questionForm: $('#questionForm')
 			};
@@ -128,7 +129,7 @@
 						},
 						messages: {
 							title: {
-								required: "Please enter your title",
+								required: "Please enter title",
 								minlength: "Title must consist of at least 2 characters"
 							},
 							description: {
@@ -148,6 +149,52 @@
 								},
 								error: function error() {
 									$('.errorform', $blogForm).fadeIn();
+								}
+							});
+						}
+					});
+				}
+
+				// blog page form
+				if (forms.loginForm.length) {
+					var $loginForm = forms.loginForm;
+					$loginForm.validate({
+						rules: {
+							email: {
+								required: true,
+								email: true
+							},
+							password: {
+								required: true
+							}
+
+						},
+						messages: {
+							email: {
+								required: "Please enter email",
+							},
+							password: {
+								required: "Please enter password",
+							},
+						},
+						submitHandler: function submitHandler(form) {
+							$(form).ajaxSubmit({
+								type: "POST",
+								data: $(form).serialize(),
+								url: "../controllers/login.php",
+  								dataType: 'json',
+								success: function (response) {
+									if(response && response.status && response.message && response.status != 200) {
+										$('#loginNotification').text(response.message);
+										$('#loginNotification').css('color', 'red');
+										$('.notificationBox', $loginForm).fadeIn();
+									}
+									if(response && response.status && response.status == 200) {
+										window.location.replace("../blog-posts.php");
+									}
+								},
+								error: function error() {
+									$('.errorform', $loginForm).fadeIn();
 								}
 							});
 						}
@@ -232,4 +279,23 @@
 					});
 				}
 			});
+
 		})(jQuery);
+
+		function deletePost(id) {
+		    $.ajax({
+		        type: "POST",
+		        url: "controllers/delete-post.php",
+		        data: { 
+		            id: id,
+		        },
+		        success: function(result) {
+		        	if($("#blogPost" + id).length) {
+		            	$("#blogPost" + id).remove();
+		        	}
+		        },
+		        error: function(result) {
+		            
+		        }
+		    });
+		}
