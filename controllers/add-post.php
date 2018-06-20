@@ -42,7 +42,7 @@ if(!empty($_POST['videoLink'])) {
 		}
 	}
 }
-
+$_POST['description'] = mysqli_real_escape_string($conn, $_POST['description']);
 $query = "INSERT INTO " . POSTS_TABLE . " VALUES (NULL, '$_POST[title]', '$_POST[description]', 1 , 0 , NOW(), NOW())";
 
 if($conn->query($query) === TRUE) {

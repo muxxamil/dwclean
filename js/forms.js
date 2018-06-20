@@ -112,48 +112,7 @@
 					});
 				}
 
-				// blog page form
-				if (forms.blogForm.length) {
-					var $blogForm = forms.blogForm;
-					$blogForm.validate({
-						rules: {
-							title: {
-								required: true,
-								minlength: 2
-							},
-							description: {
-								required: true,
-								minlength: 20
-							}
-
-						},
-						messages: {
-							title: {
-								required: "Please enter title",
-								minlength: "Title must consist of at least 2 characters"
-							},
-							description: {
-								required: "Please enter description",
-								minlength: "Description must consist of at least 20 characters"
-							},
-						},
-						submitHandler: function submitHandler(form) {
-							$(form).ajaxSubmit({
-								type: "POST",
-								data: $(form).serialize(),
-								url: "controllers/add-post.php",
-								success: function (response) {
-									$('#blogNotification').text(response);
-									$('#blogNotification').css('color', 'red');
-									$('.notificationBox', $blogForm).fadeIn();
-								},
-								error: function error() {
-									$('.errorform', $blogForm).fadeIn();
-								}
-							});
-						}
-					});
-				}
+				
 
 				// blog page form
 				if (forms.loginForm.length) {

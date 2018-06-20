@@ -28,7 +28,7 @@ if(!empty($postList)) {
 	<h2 class="post-title"><?php echo $value[title]; ?></h2>
 	<div class="post-author"><?php echo $value[username]; ?></div>
 	<div class="post-teaser">
-	    <p><?php echo substr($value[description] , 0 , 200); ?></p>
+	    <p><?php echo substr(htmlspecialchars($value[description]) , 0 , 200) . "..."; ?></p>
 	</div>
 	<div class="post-read-more col-md-6"><a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>" class="btn">Read Post</a></div>
 <?php

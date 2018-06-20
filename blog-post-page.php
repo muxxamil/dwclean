@@ -48,7 +48,7 @@
                         <h2 class="post-title"><?php echo  $result['title'] ?></h2>
                         <div class="post-author">by <?php echo  $result['username'] ?></div>
                         <div class="post-content">
-                            <p><?php echo nl2br($result['description']); ?></p>
+                            <p><?php echo nl2br(htmlspecialchars($result['description'])); ?></p>
                         </div>
                     </div>
 					<div class="divider divider-lg"></div>
