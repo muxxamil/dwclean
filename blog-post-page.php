@@ -15,7 +15,7 @@
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><a href="index.php">Home</a></li>
-				<li><a href="blog-posts.php">Blog</a></li>
+				<li><a href="blog-posts-masonry.php">Blog</a></li>
 				<li><?php echo $result[title]; ?></li>
 			</ul>
 		</div>

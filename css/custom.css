@@ -1190,6 +1190,16 @@ form.contact-form textarea + label.error {
   min-height: 50px;
 }
 .successform,
+.errorform, .imageBlogNotificationBox {
+  display: none;
+  min-height: 50px;
+}
+.successform,
+.errorform, .videoBlogNotificationBox {
+  display: none;
+  min-height: 50px;
+}
+.successform,
 .errorform {
   margin-top: 15px;
 }

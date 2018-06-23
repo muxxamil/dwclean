@@ -12,11 +12,11 @@ if(!empty($postList)) {
 <?php
 	    if(array_key_exists("video", $value)) {
 ?>
-	        <iframe width="100%" height="500px" src="<?php echo $value[video]; ?>"></iframe>
+	        <iframe width="100%" src="<?php echo $value[video]; ?>"></iframe>
 <?php	    
 	    } elseif(array_key_exists("image", $value)) {
 ?>
-	        <a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>"><img src="images/blog-posts/<?php echo $value[image]; ?>"></a>
+	        <a target=”_blank” href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>"><img src="images/blog-posts/<?php echo $value[image]; ?>"></a>
 <?php
 	    
 	    }
@@ -30,11 +30,11 @@ if(!empty($postList)) {
 	<div class="post-teaser">
 	    <p><?php echo substr(htmlspecialchars($value[description]) , 0 , 200) . "..."; ?></p>
 	</div>
-	<div class="post-read-more col-md-6"><a href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>" class="btn">Read Post</a></div>
+	<div class="post-read-more"><a target=”_blank” href="blog-post-page.php?name=<?php echo str_replace(" ", "-", $value[title]) . '&id=' . $value[id]; ?>" class="btn">Read Post</a></div>
 <?php
 if(!empty($_SESSION['userid'])) {
 ?>
-	<div class="post-read-more col-md-6"><a onclick = "deletePost(<?php echo $value['id']; ?>)" value="<?php echo $value[id]; ?>" class="btn">Delete Post</a></div>
+	<div class="post-read-more"><a onclick = "deletePost(<?php echo $value['id']; ?>)" value="<?php echo $value[id]; ?>" class="btn">Delete Post</a></div>
 <?php
 }
 ?>

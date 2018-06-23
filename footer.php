@@ -7,7 +7,7 @@
 					<li><a href="about.php">About Us</a></li>
 					<li><a href="services.php">Our Services</a></li>
 					<li><a href="faq.php">FAQs</a></li>
-					<li><a href="blog-posts.php">Blog</a></li>
+					<li><a href="blog-posts-masonry.php">Blog</a></li>
 					<li><a href="testimonials.php">Testimonials</a></li>
 					<li><a href="contact.php">Contacts</a></li>
 				</ul>

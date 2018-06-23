@@ -85,7 +85,7 @@ session_start();
 					<li><a href="about.php">About Us</a></li>
 					<li><a href="services.php">Our Services<span class="arrow"></span></a>
 					<li><a href="faq.php">FAQs</a></li>
-					<li><a href="blog-posts.php">Blog<span class="arrow"></span></a>
+					<li><a href="blog-posts-masonry.php">Blog<span class="arrow"></span></a>
 					</li>
 					<li><a href="testimonials.php">Testimonials</a></li>
 					<li><a href="contact.php">Contacts</a></li>
